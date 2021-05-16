@@ -1,0 +1,38 @@
+<div class="background-img">
+</div>
+<header class="container bg-sky-blue">
+
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#"> <span class="brand"><i class="fas fa-plane-departure"></i> AIRDA</span> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar"
+            aria-colcount="navnavigation-bar" aria-expanded="false" aria-label="Navigation Bar">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation-bar">
+
+            <ul class="navbar-nav" *ngFor="let item of getMenu()"
+                [ngClass]="item.menuId  === 1 && item.active === true ? 'ml-auto active' : item.active === true ? 'active' : item.menuId === 1 ? 'ml-auto': '' ">
+                <li class="nav-item"><a class="nav-link" (click)="navigate(item.menuId)"> {{item.menuName}} </a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <i class="lg-plane fas fa-plane"></i>
+
+</header>
+
+<section class="container bg-sky-blue padding-7-15">
+    <app-home *ngIf="loadComponent(1)"></app-home>
+    <div class="form-section">
+        <app-create-flight *ngIf="loadComponent(2)"></app-create-flight>
+        <app-modify-flight *ngIf="loadComponent(3)"></app-modify-flight>
+        <app-delete-flight *ngIf="loadComponent(4)"></app-delete-flight>
+        <app-view-flight *ngIf="loadComponent(5)"></app-view-flight>
+    </div>
+</section>
+
+<footer class="container foot-section">
+    <p>© Copyright 2021 Airline Management System</p>
+</footer>

@@ -1,1 +1,154 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #d1d9d9;
+    transition: all 0.5ms ease-in-out;
+    /* background-image: url(./assets/images/flight-bg-img.jpg); */
+}
+
+header {
+    position: sticky;
+    top: 0;
+    padding: 0 0 40px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    box-shadow: 0px 8px 15px #00adb5;
+    z-index: 1000;
+}
+
+nav {
+    font-weight: bolder;
+}
+
+section {
+    position: relative;
+    margin: 200px 0 100px;
+    border-radius: 1%;
+    box-shadow: 0px -8px 15px #00adb5;
+    text-align: center;
+    color: #511281;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+footer {
+    margin: 200px 0 0;
+    text-align: center;
+    padding: 45px 0 0;
+    text-align: center;
+    color: #511281;
+    font-weight: bolder;
+    background-color: #d1d1d1;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    box-shadow: 0px -8px 15px #00adb5;
+}
+
+.foot-section {
+    height: 100px;
+    max-height: 100px;
+}
+
+.foot-section p{
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.padding-7-15 {
+    padding: 7% 15%;
+}
+
+.nav-item a {
+    font-size: 1.2rem;
+    color: #511281;
+    cursor: pointer;
+}
+
+.nav-item a:hover {
+    color: #393e46;
+}
+
+ .active {
+    text-shadow: 0px 1px 1px #000;
+}
+
+.navbar-brand {
+    color: #511281;
+}
+
+.bg-sky-blue {
+    background-color: #eeeeee;
+}
+
+.lg-plane {
+    position: relative;
+    display: block;
+    font-size: 112px;
+    color: #511281;
+    margin: 5px auto;
+    width: 112px;
+    transform: rotate(-45deg);
+    animation-name: flight-movement;
+    animation-duration: 8s;
+    animation-delay: 0.1s;
+}
+
+.background-img {
+    position: fixed;
+    background-image: url('./assets/images/flight-bg-img.jpg');
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+.form-section {
+    position: relative;
+    width: 50%;
+    margin: 3% auto;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #511281;
+    color: #fff;
+    border-radius: 1%;
+    margin: 10px auto;
+    padding: 6px 0;
+    transition: all 0.4s ease-in-out;
+    font-weight: bolder;
+}
+
+.submit-btn:hover {
+background-color: #fff;
+color: #511281;
+}
+
+@keyframes flight-movement {
+    /* from {
+        transform: translateX(-500px);
+    }
+    to {
+        transform: translate(-40px);
+    } */
+    0% {
+        transform: translateX(-500px);
+    }
+    25% {
+        transform: translateX(-0px);
+    }
+    50% {
+        transform: rotate(-15deg);
+    }
+    75% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(-45deg);
+    }
+}
