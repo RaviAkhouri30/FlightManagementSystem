@@ -5,25 +5,53 @@
 <form [formGroup]="modifyFlight">
 
     <div class="form-group">
-        <label for="providerName">Provider Name</label>
-        <input type="email" class="form-control" maxlength="10" formControlName="providerName" id="providerName"
-            aria-describedby="providerNameHelp" placeholder="Enter Provider Name" autofocus>
-    </div>
-    <div class="form-group">
         <label for="providerCode">Provider Code</label>
-        <input type="text" class="form-control" formControlName="providerCode" id="providerCode"
-            placeholder="Enter Provider Code" readonly>
+        <input type="text" class="form-control" formControlName="providerCode" id="providerCode" maxlength="3"
+            [placeholder]="getProviderCodePlaceholder()"
+            [ngClass]="this.modifyFlight.controls.providerCode?.errors && this.modifyFlight.controls.providerCode.touched ? 'red-outline' : '' ">
+
+        <div class="error"
+            *ngIf="this.modifyFlight.controls.providerCode?.errors && this.modifyFlight.controls.providerCode.touched">
+            <span *ngIf="this.modifyFlight.controls.providerCode.errors?.required">
+                Please enter Provider Code
+            </span>
+            <span *ngIf="this.modifyFlight.controls.providerCode.errors?.invalid">
+                Please enter Valid Provider Code
+            </span>
+        </div>
+
     </div>
+
     <div class="form-group">
         <label for="ProviderType">Provider Type</label>
         <input type="text" list="ProviderTypes" class="form-control" formControlName="providerType" id="ProviderType"
-            placeholder="Enter Provider Type">
+            maxlength="13" placeholder="Please Provide Provider Type"
+            [ngClass]="this.modifyFlight.controls.providerType?.errors && this.modifyFlight.controls.providerType.touched ? 'red-outline' : '' ">
+
+        <div class="error"
+            *ngIf="this.modifyFlight.controls.providerType?.errors && this.modifyFlight.controls.providerType.touched">
+            <span *ngIf="this.modifyFlight.controls.providerType.errors?.required">
+                Please enter Provider Type
+            </span>
+            <span *ngIf="this.modifyFlight.controls.providerType.errors?.invalid">
+                Please enter Valid Provider Type
+            </span>
+        </div>
+
         <datalist id="ProviderTypes">
             <option value="Domestic"></option>
             <option value="International"></option>
         </datalist>
     </div>
 
-    <button type="button" class="btn" class="submit-btn">Insert Flight</button>
+    <button type="button" class="btn" class="submit-btn" (click)="onUpdateFlight()"> Update Flight </button>
+
+    <div class="error" *ngIf="isShowInvalid()">
+        Same Record already Exist in DB
+    </div>
+
+    <div class="error" *ngIf="isRecordExist()">
+        Record doesn't exists in DB
+    </div>
 
 </form>

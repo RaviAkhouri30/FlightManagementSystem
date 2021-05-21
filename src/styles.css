@@ -129,6 +129,17 @@ background-color: #fff;
 color: #511281;
 }
 
+.error {
+    margin-left: 2px;
+    color: red;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.red-outline {
+    border-color: red;
+}
+
 @keyframes flight-movement {
     /* from {
         transform: translateX(-500px);
