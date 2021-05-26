@@ -8,7 +8,17 @@
         <label for="providerName">Provider Name</label>
         <input type="email" class="form-control" maxlength="10" formControlName="providerName" id="providerName"
             aria-describedby="providerNameHelp" placeholder="Enter Provider Name" (blur)="onProviderName()"
+            [ngClass]="this.createFlight.controls.providerName?.errors && this.createFlight.controls.providerName.touched ? 'red-outline' : '' "
             autofocus>
+        <div class="error"
+            *ngIf="this.createFlight.controls.providerName?.errors && this.createFlight.controls.providerName.touched">
+            <span *ngIf="this.createFlight.controls.providerName.errors?.required">
+                Please enter Flight Name
+            </span>
+            <span *ngIf="this.createFlight.controls.providerName.errors?.invalid">
+                Please enter Valid Flight Name
+            </span>
+        </div>
     </div>
     <div class="form-group">
         <label for="providerCode">Provider Code</label>
@@ -18,13 +28,25 @@
     <div class="form-group">
         <label for="ProviderType">Provider Type</label>
         <input type="text" list="ProviderTypes" class="form-control" formControlName="providerType" id="ProviderType"
-            placeholder="Enter Provider Type">
+            placeholder="Enter Provider Type" maxlength="13"
+            [ngClass]="this.createFlight.controls.providerType?.errors && this.createFlight.controls.providerType.touched ? 'red-outline' : '' ">
+
+        <div class="error"
+            *ngIf="this.createFlight.controls.providerType?.errors && this.createFlight.controls.providerType.touched">
+            <span *ngIf="this.createFlight.controls.providerType.errors?.required">
+                Please enter Provider Type
+            </span>
+            <span *ngIf="this.createFlight.controls.providerType.errors?.invalid">
+                Please enter Valid Provider Type
+            </span>
+        </div>
+
         <datalist id="ProviderTypes">
             <option value="Domestic"></option>
             <option value="International"></option>
         </datalist>
     </div>
 
-    <button type="button" class="btn" class="submit-btn">Insert Flight</button>
+    <button type="button" class="btn" class="submit-btn" (click)="onInsertFlight()">Insert Flight</button>
 
 </form>

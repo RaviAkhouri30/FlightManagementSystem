@@ -49,4 +49,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  public navigateToHome = (param: string): void => {
+    this.getMenu().forEach((e: Menu, index: number) => {
+      if (index === 0) {
+        e.active = true;
+        return;
+      }
+      e.active = false;
+    });
+  }
+
 }

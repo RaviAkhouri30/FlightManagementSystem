@@ -26,11 +26,13 @@
 <section class="container bg-sky-blue padding-7-15">
     <app-home *ngIf="loadComponent(1)"></app-home>
     <div class="form-section">
-        <app-create-flight *ngIf="loadComponent(2)"></app-create-flight>
-        <app-modify-flight *ngIf="loadComponent(3)"></app-modify-flight>
-        <app-delete-flight *ngIf="loadComponent(4)"></app-delete-flight>
-        <app-view-flight *ngIf="loadComponent(5)"></app-view-flight>
+        <app-create-flight *ngIf="loadComponent(2)" (navigateToHome)="navigateToHome($event)"></app-create-flight>
+        <app-modify-flight *ngIf="loadComponent(3)" (navigateToHome)="navigateToHome($event)"></app-modify-flight>
+        <app-delete-flight *ngIf="loadComponent(4)" (navigateToHome)="navigateToHome($event)"></app-delete-flight>
     </div>
+    <app-view-flight *ngIf="loadComponent(5)"></app-view-flight>
+
+
 </section>
 
 <footer class="container foot-section">

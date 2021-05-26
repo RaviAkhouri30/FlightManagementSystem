@@ -1,1 +1,55 @@
-<p>delete-flight works!</p>
+<h1>
+    Modify Flight
+</h1>
+
+<form [formGroup]="deleteFlight">
+
+    <div class="form-group">
+        <label for="providerCode">Provider Code</label>
+        <input type="text" class="form-control" formControlName="providerCode" id="providerCode" maxlength="3"
+            [placeholder]="getProviderCodePlaceholder()"
+            [ngClass]="this.deleteFlight.controls.providerCode?.errors && this.deleteFlight.controls.providerCode.touched ? 'red-outline' : '' ">
+        <div class="error"
+            *ngIf="this.deleteFlight.controls.providerCode?.errors && this.deleteFlight.controls.providerCode.touched">
+            <span *ngIf="this.deleteFlight.controls.providerCode.errors?.required">
+                Please enter Provider Code
+            </span>
+            <span *ngIf="this.deleteFlight.controls.providerCode.errors?.invalid">
+                Please enter Valid Provider Code
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ProviderType">Provider Type</label>
+        <input type="text" list="ProviderTypes" class="form-control" formControlName="providerType" id="ProviderType"
+            maxlength="13" placeholder="Please Provide Provider Type"
+            [ngClass]="this.deleteFlight.controls.providerType?.errors && this.deleteFlight.controls.providerType.touched ? 'red-outline' : '' ">
+
+        <div class="error"
+            *ngIf="this.deleteFlight.controls.providerType?.errors && this.deleteFlight.controls.providerType.touched">
+            <span *ngIf="this.deleteFlight.controls.providerType.errors?.required">
+                Please enter Provider Type
+            </span>
+            <span *ngIf="this.deleteFlight.controls.providerType.errors?.invalid">
+                Please enter Valid Provider Type
+            </span>
+        </div>
+
+        <datalist id="ProviderTypes">
+            <option value="Domestic"></option>
+            <option value="International"></option>
+        </datalist>
+    </div>
+
+    <button type="button" class="btn" class="submit-btn" (click)="onDeleteFlight()"> Delete Flight </button>
+
+    <div class="error" *ngIf="isShowInvalid()">
+        Record doesn't exists
+    </div>
+
+    <div class="error" *ngIf="isShowSuccess()">
+        Record Deleted Successfully
+    </div>
+
+</form>
